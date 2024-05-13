@@ -24,6 +24,15 @@ export class UserController {
       res.status(400).json({ Error: error.message, status: false });
     }
   }
+  async getoneuser(req: Request, res: Response) {
+    try {
+      const { id } = req.params;
+      const data = await object.user.getoneuser(id);
+      res.json(data);
+    } catch (error: any) {
+      res.status(400).json({ Error: error.message, status: false });
+    }
+  }
   async updateuser(req: Request, res: Response) {
     try {
       const userdata: UserInter = req.body;
@@ -38,6 +47,15 @@ export class UserController {
     try {
       const id: String = req.params.id;
       const data = await object.user.deleteuser(id);
+      res.json(data);
+    } catch (error: any) {
+      res.status(400).json({ Error: error.message, status: false });
+    }
+  }
+  async loginuser(req: Request, res: Response) {
+    try {
+      const { name, password }: any = req.body;
+      const data = await object.user.loginuser(name, password);
       res.json(data);
     } catch (error: any) {
       res.status(400).json({ Error: error.message, status: false });

@@ -8,7 +8,11 @@ const userroute = Router();
 
 userroute.post("/user/createuser", validate.UserValidate, user.createuser);
 
+userroute.post("/user/loginuser", user.loginuser);
+
 userroute.get("/user/GetAllUser", user.getalluser);
+
+userroute.get("/user/GetOneUser/:id", user.getoneuser);
 
 userroute.put("/user/updateuser/:id", validate.UserValidate, user.updateuser);
 

@@ -19,7 +19,7 @@ const UserSchema: Schema = new Schema({
   role: {
     type: String,
     enum: {
-      values: ["doctor", "patient"],
+      values: ["doctor", "patient", "receptionist"],
       message: "{VALUE} is Not A Valid Role..",
     },
   },

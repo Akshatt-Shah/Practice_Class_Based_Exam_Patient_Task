@@ -10,9 +10,13 @@ userroute.post("/user/createuser", validate.UserValidate, user.createuser);
 
 userroute.post("/user/loginuser", user.loginuser);
 
+userroute.post("/user/searchandfilteruser", user.SearchOrFilteruser);
+
 userroute.get("/user/GetAllUser", user.getalluser);
 
 userroute.get("/user/GetOneUser/:id", user.getoneuser);
+
+userroute.get("/user/GetList/:role", user.getlist);
 
 userroute.put("/user/updateuser/:id", validate.UserValidate, user.updateuser);
 

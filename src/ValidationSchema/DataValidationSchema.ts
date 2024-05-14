@@ -15,3 +15,12 @@ export const UserSchema = Yup.object().shape({
   speciality: Yup.string(),
   dob: Yup.date().required(),
 });
+
+export const TreatmentSchema = Yup.object().shape({
+  patient_id: Yup.string().required(),
+  doctor_id: Yup.string().required(),
+  diseas: Yup.string().required(),
+  admit_date: Yup.date().required(),
+  discharge_date: Yup.date().required(),
+  bill_amount: Yup.number().required(),
+});

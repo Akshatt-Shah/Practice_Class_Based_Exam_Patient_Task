@@ -5,12 +5,14 @@ import { config } from "dotenv";
 import "cookie-parser";
 import cookieParser from "cookie-parser";
 import userroute from "./src/routes/Userroutes";
+import Trouter from "./src/routes/Treatment.routes";
 config();
 const app = express();
 app.use(cookieParser());
 app.use(express.json());
 
 app.use(userroute);
+app.use(Trouter);
 
 let portString = process.env.PORT;
 if (!portString) {

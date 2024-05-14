@@ -33,6 +33,15 @@ export class UserController {
       res.status(400).json({ Error: error.message, status: false });
     }
   }
+  async getlist(req: Request, res: Response) {
+    try {
+      const { role } = req.params;
+      const data = await object.user.getlist(role);
+      res.json(data);
+    } catch (error: any) {
+      res.status(400).json({ Error: error.message, status: false });
+    }
+  }
   async updateuser(req: Request, res: Response) {
     try {
       const userdata: UserInter = req.body;
@@ -56,6 +65,17 @@ export class UserController {
     try {
       const { name, password }: any = req.body;
       const data = await object.user.loginuser(name, password);
+      res.cookie("UserToken", data.usertoken);
+      res.json(data);
+    } catch (error: any) {
+      res.status(400).json({ Error: error.message, status: false });
+    }
+  }
+  async SearchOrFilteruser(req: Request, res: Response) {
+    try {
+      const {search,filter}= req.query;
+    
+      const data = await object.user.SearchOrFilter(search,filter);
       res.json(data);
     } catch (error: any) {
       res.status(400).json({ Error: error.message, status: false });
